@@ -1,10 +1,11 @@
 package com.bytesw.school.eis.bo;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
+@Table(name = "students")
 public class Student {
 
     @Id
@@ -16,6 +17,9 @@ public class Student {
     private String section;
     private String user;
     private String password;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Assignment> assignments;
 
     public int getId() {
         return id;
@@ -79,5 +83,13 @@ public class Student {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<Assignment> assignments) {
+        this.assignments = assignments;
     }
 }

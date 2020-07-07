@@ -24,25 +24,25 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<StudentDTO> getStudent(@PathVariable int id){
-        StudentDTO response = studentService.getStudent(id);
+        StudentDTO response = this.studentService.getStudent(id);
         return new ResponseEntity<StudentDTO>(response, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<StudentDTO> saveStudent(@RequestBody Student student){
-        StudentDTO response = studentService.saveStudent(student);
+        StudentDTO response = this.studentService.saveStudent(student);
         return new ResponseEntity<StudentDTO>(response, HttpStatus.OK);
     }
 
     @PutMapping
     public ResponseEntity<StudentDTO> updateStudent(@RequestBody Student student){
-        StudentDTO response = studentService.updateStudent(student);
+        StudentDTO response = this.studentService.updateStudent(student);
         return new ResponseEntity<StudentDTO>(response, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<StudentDTO> deleteStudent(@PathVariable int id){
-        StudentDTO response = studentService.deleteStudent(id);
+        StudentDTO response = this.studentService.deleteStudent(id);
         return new ResponseEntity<StudentDTO>(response, HttpStatus.OK);
     }
 
@@ -62,17 +62,25 @@ public class StudentController {
         return new ResponseEntity<List<Student>>(response, HttpStatus.OK);
     }
 
+    //Delete students by grade
+    @DeleteMapping("/delByGrade/{grade}")
+    public ResponseEntity<List<Student>> delByGrade(@PathVariable int grade){
+        List<Student> response = this.studentService.byGrade(grade);
+        this.studentService.delByGrade(grade);
+        return new ResponseEntity<List<Student>>(response, HttpStatus.OK);
+    }
+
     //Students by grade
     @GetMapping("/grade/{grade}")
     public ResponseEntity<List<Student>> byGrade(@PathVariable int grade){
-        List<Student> response = studentService.byGrade(grade);
+        List<Student> response = this.studentService.byGrade(grade);
         return new ResponseEntity<List<Student>>(response, HttpStatus.OK);
     }
 
     //Students by grade and section
     @GetMapping("/{grade}/{section}")
     public ResponseEntity<List<Student>> byGradeAndSection(@PathVariable int grade, @PathVariable String section){
-        List<Student> response = studentService.byGradeAndSection(grade, section);
+        List<Student> response = this.studentService.byGradeAndSection(grade, section);
         return new ResponseEntity<List<Student>>(response, HttpStatus.OK);
     }
 

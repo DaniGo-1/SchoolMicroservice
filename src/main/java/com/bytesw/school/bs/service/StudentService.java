@@ -19,6 +19,8 @@ public interface StudentService {
 
     int updateGradeBySec(String section, int grade);
 
+    int delByGrade(int grade);
+
     List<Student> byGrade(int grade);
 
     List<Student> byGradeAndSection(int grade, String section);

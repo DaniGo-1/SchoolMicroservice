@@ -69,6 +69,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public int delByGrade(int grade) {
+        int response = this.studentRepository.delByGrade(grade);
+        return response;
+    }
+
+    @Override
     public List<Student> byGrade(int grade) {
         List<Student> response = this.studentRepository.byGrade(grade);
         return response;

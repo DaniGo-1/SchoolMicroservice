@@ -25,6 +25,12 @@ public interface StudentRepository extends JpaRepository<Student, Integer> {
     @Query("UPDATE Student s SET s.grade = :grade WHERE s.section = :section")
     int updateGradeBySec(@Param("section") String section, @Param("grade") int grade);
 
+    //Delete by grade
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Student s WHERE s.grade = :grade")
+    int delByGrade(@Param("grade") int grade);
+
     //Search by grade
     @Query("SELECT s FROM Student s WHERE s.grade = :grade")
     List<Student> byGrade(@Param("grade") int grade);
