@@ -18,7 +18,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course getCourse(int id) {
-        Course response = this.courseRepository.getOne(id);
+        Course response = this.courseRepository.findOne(id);
         return response;
     }
 }
