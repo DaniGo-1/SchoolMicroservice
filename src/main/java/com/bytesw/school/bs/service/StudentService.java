@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface StudentService {
 
+    List<Student> getAllStudent();
+
     StudentDTO getStudent(int id);
 
     StudentDTO saveStudent(Student student);
@@ -26,4 +28,6 @@ public interface StudentService {
     List<Student> byGradeAndSection(int grade, String section);
 
     List<Student> byThreeParams(int age, int grade, String section);
+
+    Student searchByName(String firstname);
 }

@@ -8,7 +8,11 @@ import java.util.List;
 @Table(name = "students")
 public class Student {
 
+//    @GeneratedValue(strategy = GenerationType.AUTO);
+//    Tipo UUID -> Hibernate genera una identificacion de forma "8dd5f315-9788-4d00-87bb-10eed9eff566".
+
     @Id
+    @GeneratedValue
     private int id;
     private String firstname;
     private String lastname;
@@ -18,7 +22,7 @@ public class Student {
     private String user;
     private String password;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Assignment> assignments;
 
     public int getId() {

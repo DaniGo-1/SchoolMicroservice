@@ -4,10 +4,19 @@ import com.bytesw.school.bs.service.StudentService;
 import com.bytesw.school.eis.bo.Student;
 import com.bytesw.school.eis.dto.StudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.validation.MessageCodesResolver;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
+import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
 
@@ -15,11 +24,119 @@ import java.util.List;
 @RequestMapping(value = "/student", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
 public class StudentController {
 
+    @Bean
+    public WebMvcConfigurer CORSConfigurer() {
+        return new WebMvcConfigurer() {
+
+            @Override
+            public void configurePathMatch(PathMatchConfigurer pathMatchConfigurer) {
+
+            }
+
+            @Override
+            public void configureContentNegotiation(ContentNegotiationConfigurer contentNegotiationConfigurer) {
+
+            }
+
+            @Override
+            public void configureAsyncSupport(AsyncSupportConfigurer asyncSupportConfigurer) {
+
+            }
+
+            @Override
+            public void configureDefaultServletHandling(DefaultServletHandlerConfigurer defaultServletHandlerConfigurer) {
+
+            }
+
+            @Override
+            public void addFormatters(FormatterRegistry formatterRegistry) {
+
+            }
+
+            @Override
+            public void addInterceptors(InterceptorRegistry interceptorRegistry) {
+
+            }
+
+            @Override
+            public void addResourceHandlers(ResourceHandlerRegistry resourceHandlerRegistry) {
+
+            }
+
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("*")
+                        .allowedHeaders("*")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "HEAD")
+                        .maxAge(-1)   // add maxAge
+                        .allowCredentials(false);
+            }
+
+
+            @Override
+            public void addViewControllers(ViewControllerRegistry viewControllerRegistry) {
+
+            }
+
+            @Override
+            public void configureViewResolvers(ViewResolverRegistry viewResolverRegistry) {
+
+            }
+
+            @Override
+            public void addArgumentResolvers(List<HandlerMethodArgumentResolver> list) {
+
+            }
+
+            @Override
+            public void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> list) {
+
+            }
+
+            @Override
+            public void configureMessageConverters(List<HttpMessageConverter<?>> list) {
+
+            }
+
+            @Override
+            public void extendMessageConverters(List<HttpMessageConverter<?>> list) {
+
+            }
+
+            @Override
+            public void configureHandlerExceptionResolvers(List<HandlerExceptionResolver> list) {
+
+            }
+
+            @Override
+            public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> list) {
+
+            }
+
+            @Override
+            public Validator getValidator() {
+                return null;
+            }
+
+            @Override
+            public MessageCodesResolver getMessageCodesResolver() {
+                return null;
+            }
+        };
+    }
+
     private StudentService studentService;
 
     @Autowired
     public StudentController(StudentService studentService){
         this.studentService = studentService;
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Student>> getAllStudent(){
+        List<Student> response = this.studentService.getAllStudent();
+        return new ResponseEntity<List<Student>>(response, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -89,5 +206,12 @@ public class StudentController {
     public ResponseEntity<List<Student>> byThreeParams(@PathVariable int age, @PathVariable int grade, @PathVariable String section){
         List<Student> response = this.studentService.byThreeParams(age,grade, section);
         return new ResponseEntity<List<Student>>(response, HttpStatus.OK);
+    }
+
+    //Search By Name
+    @GetMapping("/byName/{firstname}")
+    public ResponseEntity<Student> searchByName(@PathVariable String firstname){
+        Student response = this.studentService.searchByName(firstname);
+        return new ResponseEntity<Student>(response, HttpStatus.OK);
     }
 }

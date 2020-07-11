@@ -20,8 +20,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<Student> getAllStudent() {
+        List<Student> response = this.studentRepository.findAll();
+        return response;
+    }
+
+    @Override
     public StudentDTO getStudent(int id) {
-        Student student = this.studentRepository.getOne(id);
+        Student student = this.studentRepository.findOne(id);
         StudentDTO response = new StudentDTO(student.getId(),student.getFirstname(),
                                         student.getLastname(),student.getAge(),student.getGrade(),
                                         student.getSection(),student.getUser());
@@ -89,6 +95,12 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> byThreeParams(int age, int grade, String section) {
         List<Student> response = this.studentRepository.byThreeParams(age, grade, section);
+        return response;
+    }
+
+    @Override
+    public Student searchByName(String firstname) {
+        Student response = this.studentRepository.searchByName(firstname);
         return response;
     }
 }

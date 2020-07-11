@@ -1,5 +1,8 @@
 package com.bytesw.school.eis.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,10 +11,12 @@ import java.util.List;
 public class Course {
 
     @Id
+    @GeneratedValue
     private int id;
     private String description;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+//    @JsonIgnoreProperties("course")
     private List<Assignment> assignments;
 
     public int getId() {

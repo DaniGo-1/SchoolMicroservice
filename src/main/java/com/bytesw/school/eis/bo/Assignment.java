@@ -1,5 +1,7 @@
 package com.bytesw.school.eis.bo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,6 +9,7 @@ import javax.persistence.*;
 public class Assignment {
 
     @Id
+    @GeneratedValue
     private int id;
 
     @ManyToOne
