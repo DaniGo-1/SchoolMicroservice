@@ -29,5 +29,5 @@ public interface StudentService {
 
     List<Student> byThreeParams(int age, int grade, String section);
 
-    Student searchByName(String firstname);
+    List<Student> searchByName(String firstname);
 }

@@ -32,14 +32,14 @@ public interface StudentRepository extends JpaRepository<Student, Integer>, Stud
     int delByGrade(@Param("grade") int grade);
 
     //Search by grade
-    @Query("SELECT s FROM Student s WHERE s.grade = :grade")
+    @Query("SELECT s FROM Student s WHERE s.grade = :grade ORDER BY s.id DESC")
     List<Student> byGrade(@Param("grade") int grade);
 
     //Search by grade and section
-    @Query("SELECT s FROM Student s WHERE s.grade = :grade AND s.section = :section")
+    @Query("SELECT s FROM Student s WHERE s.grade = :grade AND s.section = :section ORDER BY s.id DESC")
     List<Student> byGradeAndSection(@Param("grade") int grade, @Param("section") String section);
 
     //Search by grade, section and age
-    @Query("SELECT s FROM Student s WHERE s.age = :age AND s.grade = :grade AND s.section = :section")
+    @Query("SELECT s FROM Student s WHERE s.age = :age AND s.grade = :grade AND s.section = :section ORDER BY s.id DESC")
     List<Student> byThreeParams(@Param("age") int age, @Param("grade") int grade, @Param("section") String section);
 }

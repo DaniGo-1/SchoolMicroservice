@@ -2,8 +2,10 @@ package com.bytesw.school.bs.dao;
 
 import com.bytesw.school.eis.bo.Student;
 
+import java.util.List;
+
 public interface StudentRepositoryCustom {
 
-    Student searchByName(String firstname);
+    List<Student> searchByName(String firstname);
 
 }

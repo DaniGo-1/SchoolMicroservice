@@ -210,8 +210,8 @@ public class StudentController {
 
     //Search By Name
     @GetMapping("/byName/{firstname}")
-    public ResponseEntity<Student> searchByName(@PathVariable String firstname){
-        Student response = this.studentService.searchByName(firstname);
-        return new ResponseEntity<Student>(response, HttpStatus.OK);
+    public ResponseEntity<List<Student>> searchByName(@PathVariable String firstname){
+        List<Student> response = this.studentService.searchByName(firstname);
+        return new ResponseEntity<List<Student>>(response, HttpStatus.OK);
     }
 }

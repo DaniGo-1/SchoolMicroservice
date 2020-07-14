@@ -7,6 +7,8 @@ import com.bytesw.school.eis.dto.StudentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -22,6 +24,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getAllStudent() {
         List<Student> response = this.studentRepository.findAll();
+        Collections.reverse(response);
         return response;
     }
 
@@ -99,8 +102,8 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student searchByName(String firstname) {
-        Student response = this.studentRepository.searchByName(firstname);
+    public List<Student> searchByName(String firstname) {
+        List<Student> response = this.studentRepository.searchByName(firstname);
         return response;
     }
 }

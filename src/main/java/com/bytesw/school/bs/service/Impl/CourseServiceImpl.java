@@ -6,6 +6,9 @@ import com.bytesw.school.eis.bo.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
+
 @Service
 public class CourseServiceImpl implements CourseService {
 
@@ -19,6 +22,13 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course getCourse(int id) {
         Course response = this.courseRepository.findOne(id);
+        return response;
+    }
+
+    @Override
+    public List<Course> getCourseAll() {
+        List<Course> response = this.courseRepository.findAll();
+        Collections.reverse(response);
         return response;
     }
 }

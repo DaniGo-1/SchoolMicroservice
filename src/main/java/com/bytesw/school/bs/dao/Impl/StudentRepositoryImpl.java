@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.List;
 
 public class StudentRepositoryImpl implements StudentRepositoryCustom {
 
@@ -17,9 +18,9 @@ public class StudentRepositoryImpl implements StudentRepositoryCustom {
     }
 
     @Override
-    public Student searchByName(String firstname) {
-        Query query = em.createQuery("SELECT s FROM Student s WHERE s.firstname = :firstname");
+    public List<Student> searchByName(String firstname) {
+        Query query = em.createQuery("SELECT s FROM Student s WHERE s.firstname = :firstname ORDER BY s.id DESC");
         query.setParameter("firstname", firstname);
-        return (Student) query.getSingleResult();
+        return (List<Student>) query.getResultList();
     }
 }
