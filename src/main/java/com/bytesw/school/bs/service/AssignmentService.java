@@ -10,4 +10,6 @@ public interface AssignmentService {
     Assignment getAssignment(int id);
 
     List<Assignment> searchAllAssign();
+
+    Assignment createAssignment(Assignment assignment);
 }

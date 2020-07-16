@@ -1,5 +1,6 @@
 package com.bytesw.school.bs.dao;
 
+import com.bytesw.school.eis.bo.Assignment;
 import com.bytesw.school.eis.bo.Student;
 import com.bytesw.school.eis.dto.StudentDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -42,4 +43,7 @@ public interface StudentRepository extends JpaRepository<Student, Integer>, Stud
     //Search by grade, section and age
     @Query("SELECT s FROM Student s WHERE s.age = :age AND s.grade = :grade AND s.section = :section ORDER BY s.id DESC")
     List<Student> byThreeParams(@Param("age") int age, @Param("grade") int grade, @Param("section") String section);
+
+    @Query("FROM Student s, Assignment a WHERE a.student.id = s.id ORDER BY s.id DESC")
+    List<Student> searchAllStudent();
 }

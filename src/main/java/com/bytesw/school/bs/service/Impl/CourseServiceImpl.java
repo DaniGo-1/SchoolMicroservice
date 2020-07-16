@@ -31,4 +31,10 @@ public class CourseServiceImpl implements CourseService {
         Collections.reverse(response);
         return response;
     }
+
+    @Override
+    public Course createCourse(Course course) {
+        Course response = this.courseRepository.save(course);
+        return response;
+    }
 }

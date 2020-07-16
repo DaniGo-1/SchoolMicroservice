@@ -21,7 +21,7 @@ import org.springframework.web.servlet.config.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/student", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+@RequestMapping(value = "/student", produces = MediaType.APPLICATION_JSON_VALUE)
 public class StudentController {
 
     @Bean

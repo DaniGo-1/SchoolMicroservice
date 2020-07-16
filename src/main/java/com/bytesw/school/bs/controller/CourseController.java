@@ -11,10 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.validation.MessageCodesResolver;
 import org.springframework.validation.Validator;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -145,6 +142,12 @@ public class CourseController {
     public ResponseEntity<List<Course>> getCourseAll(){
         List<Course> response = this.courseService.getCourseAll();
         return new ResponseEntity<List<Course>>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Course> createCourse(@RequestBody Course course){
+        Course response = this.courseService.createCourse(course);
+        return new ResponseEntity<Course>(response, HttpStatus.OK);
     }
 
 }

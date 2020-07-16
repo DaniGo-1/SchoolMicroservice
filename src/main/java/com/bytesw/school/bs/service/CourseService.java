@@ -10,4 +10,5 @@ public interface CourseService {
 
     List<Course> getCourseAll();
 
+    Course createCourse(Course course);
 }

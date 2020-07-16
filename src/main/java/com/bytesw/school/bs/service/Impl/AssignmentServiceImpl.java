@@ -31,5 +31,11 @@ public class AssignmentServiceImpl implements AssignmentService {
         return response;
     }
 
+    @Override
+    public Assignment createAssignment(Assignment assignment) {
+        Assignment response = this.assignmentRepository.save(assignment);
+        return response;
+    }
+
 
 }
