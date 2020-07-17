@@ -27,13 +27,26 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public List<Assignment> searchAllAssign() {
-        List<Assignment> response = this.assignmentRepository.searchAllAssign();
+        List<Assignment> response = this.assignmentRepository.findAll();
         return response;
     }
 
     @Override
     public Assignment createAssignment(Assignment assignment) {
         Assignment response = this.assignmentRepository.save(assignment);
+        return response;
+    }
+
+    @Override
+    public Assignment updateAssignment(Assignment assignment) {
+        Assignment response = this.assignmentRepository.save(assignment);
+        return response;
+    }
+
+    @Override
+    public Assignment deleteAssignment(int id) {
+        Assignment response = this.assignmentRepository.findOne(id);
+        this.assignmentRepository.delete(id);
         return response;
     }
 

@@ -37,4 +37,17 @@ public class CourseServiceImpl implements CourseService {
         Course response = this.courseRepository.save(course);
         return response;
     }
+
+    @Override
+    public Course updateCourse(Course course) {
+        Course response = this.courseRepository.save(course);
+        return response;
+    }
+
+    @Override
+    public Course deleteCourse(int id) {
+        Course response = this.courseRepository.findOne(id);
+        this.courseRepository.delete(id);
+        return response;
+    }
 }

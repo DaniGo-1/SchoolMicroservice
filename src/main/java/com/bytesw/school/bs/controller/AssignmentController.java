@@ -148,4 +148,16 @@ public class AssignmentController {
         Assignment response = this.assignmentService.createAssignment(assignment);
         return new ResponseEntity<Assignment>(response, HttpStatus.OK);
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<Assignment> updateAssignment(@RequestBody Assignment assignment){
+        Assignment response = this.assignmentService.updateAssignment(assignment);
+        return new ResponseEntity<Assignment>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Assignment> deleteAssignment(@RequestParam int id){
+        Assignment response = this.assignmentService.deleteAssignment(id);
+        return new ResponseEntity<Assignment>(response, HttpStatus.OK);
+    }
 }

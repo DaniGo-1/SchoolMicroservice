@@ -12,4 +12,8 @@ public interface AssignmentService {
     List<Assignment> searchAllAssign();
 
     Assignment createAssignment(Assignment assignment);
+
+    Assignment updateAssignment(Assignment assignment);
+
+    Assignment deleteAssignment(int id);
 }

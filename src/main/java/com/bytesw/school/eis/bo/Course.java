@@ -15,9 +15,9 @@ public class Course {
     private int id;
     private String description;
 
-    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
-//    @JsonIgnoreProperties("course")
-    private List<Assignment> assignments;
+//    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL, orphanRemoval = true)
+////    @JsonIgnoreProperties("course")
+//    private List<Assignment> assignments;
 
     public int getId() {
         return id;

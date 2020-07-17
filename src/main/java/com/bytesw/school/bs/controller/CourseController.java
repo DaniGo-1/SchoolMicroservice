@@ -150,4 +150,16 @@ public class CourseController {
         return new ResponseEntity<Course>(response, HttpStatus.OK);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Course> updateCourse(@RequestBody Course course){
+        Course response = this.courseService.updateCourse(course);
+        return new ResponseEntity<Course>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Course> deleteCourse(@RequestParam int id){
+        Course response = this.courseService.deleteCourse(id);
+        return new ResponseEntity<Course>(response, HttpStatus.OK);
+    }
+
 }

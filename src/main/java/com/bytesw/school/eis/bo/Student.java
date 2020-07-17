@@ -22,8 +22,8 @@ public class Student {
     private String user;
     private String password;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Assignment> assignments;
+//    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Assignment> assignments;
 
     public int getId() {
         return id;
