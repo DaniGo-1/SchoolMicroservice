@@ -7,6 +7,7 @@ import com.bytesw.school.eis.dto.AssignmentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -28,6 +29,7 @@ public class AssignmentServiceImpl implements AssignmentService {
     @Override
     public List<Assignment> searchAllAssign() {
         List<Assignment> response = this.assignmentRepository.findAll();
+        Collections.reverse(response);
         return response;
     }
 
