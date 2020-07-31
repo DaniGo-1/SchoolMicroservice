@@ -11,7 +11,7 @@
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
-        <version>Dalston.SR5</version>
+        <version>Finchley.SR4</version>
     </parent>
 
     <dependencies>
@@ -47,6 +47,11 @@
 <!--            <artifactId>hibernate-entitymanager</artifactId>-->
 <!--            <version>5.4.18.Final</version>-->
 <!--        </dependency>-->
+        <!--  Esta dependencia ayuda a conectar el microservicio con el service discovery  -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

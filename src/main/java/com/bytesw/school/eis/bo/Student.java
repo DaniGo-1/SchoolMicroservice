@@ -12,7 +12,7 @@ public class Student {
 //    Tipo UUID -> Hibernate genera una identificacion de forma "8dd5f315-9788-4d00-87bb-10eed9eff566".
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String firstname;
     private String lastname;

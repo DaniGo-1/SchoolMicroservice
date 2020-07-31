@@ -11,3 +11,12 @@ spring:
     username : root
     password : 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: SchoolApp
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:1111/eureka}
+

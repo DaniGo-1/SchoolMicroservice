@@ -19,6 +19,7 @@ import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/assignment", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -131,7 +132,7 @@ public class AssignmentController {
         this.assignmentService = assignmentService;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Assignment> getAssignment(@PathVariable int id){
         Assignment response = this.assignmentService.getAssignment(id);
         return new ResponseEntity<Assignment>(response, HttpStatus.OK);

@@ -1,9 +1,9 @@
 package com.bytesw.school.bs.service;
 
 import com.bytesw.school.eis.bo.Assignment;
-import com.bytesw.school.eis.dto.AssignmentDTO;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface AssignmentService {
 

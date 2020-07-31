@@ -3,12 +3,12 @@ package com.bytesw.school.bs.service.Impl;
 import com.bytesw.school.bs.dao.AssignmentRepository;
 import com.bytesw.school.bs.service.AssignmentService;
 import com.bytesw.school.eis.bo.Assignment;
-import com.bytesw.school.eis.dto.AssignmentDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AssignmentServiceImpl implements AssignmentService {
@@ -22,8 +22,8 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public Assignment getAssignment(int id) {
-        Assignment response = this.assignmentRepository.findOne(id);
-        return response;
+        Optional<Assignment> response = this.assignmentRepository.findById(id);
+        return response.isPresent() ? response.get() : new Assignment();
     }
 
     @Override
@@ -47,9 +47,9 @@ public class AssignmentServiceImpl implements AssignmentService {
 
     @Override
     public Assignment deleteAssignment(int id) {
-        Assignment response = this.assignmentRepository.findOne(id);
-        this.assignmentRepository.delete(id);
-        return response;
+        Optional<Assignment> response = this.assignmentRepository.findById(id);
+        this.assignmentRepository.deleteById(id);
+        return response.isPresent() ? response.get() : new Assignment();
     }
 
 

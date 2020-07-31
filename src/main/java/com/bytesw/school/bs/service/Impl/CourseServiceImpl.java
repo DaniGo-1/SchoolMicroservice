@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -21,8 +22,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course getCourse(int id) {
-        Course response = this.courseRepository.findOne(id);
-        return response;
+        Optional<Course>  response = this.courseRepository.findById(id);
+        return response.isPresent() ? response.get() : new Course();
     }
 
     @Override
@@ -46,8 +47,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course deleteCourse(int id) {
-        Course response = this.courseRepository.findOne(id);
-        this.courseRepository.delete(id);
-        return response;
+        Optional<Course> response = this.courseRepository.findById(id);
+        this.courseRepository.deleteById(id);
+        return response.isPresent() ? response.get() : new Course();
     }
 }

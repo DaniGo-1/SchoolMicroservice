@@ -30,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO getStudent(int id) {
-        Student student = this.studentRepository.findOne(id);
+        Student student = this.studentRepository.getOne(id);
         StudentDTO response = new StudentDTO(student.getId(),student.getFirstname(),
                                         student.getLastname(),student.getAge(),student.getGrade(),
                                         student.getSection(),student.getUser());
@@ -58,7 +58,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDTO deleteStudent(int id) {
         Student student = this.studentRepository.getOne(id);
-        this.studentRepository.delete(id);
+        this.studentRepository.deleteById(id);
         StudentDTO response = new StudentDTO(student.getId(),student.getFirstname(),
                 student.getLastname(),student.getAge(),student.getGrade(),
                 student.getSection(),student.getUser());
